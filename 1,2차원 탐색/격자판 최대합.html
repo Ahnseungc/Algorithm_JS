@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let answer = 0;
+        let r_sum = 0,
+          c_sum = 0,
+          a_sum = 0;
+        let sum_list_a = [],
+          sum_list_b = [],
+          sum_list_c = [],
+          result_list = [];
+        arr.forEach((e, index) => {
+          // 행 구하기
+          e.forEach((num) => {
+            a_sum += num;
+          });
+          sum_list_a.push(a_sum);
+          a_sum = 0;
+        });
+        result_list.push(Math.max(...sum_list_a));
+
+        // 열 구하기
+        for (var i = 0; i < arr.length; i++) {
+          arr.forEach((e) => {
+            r_sum += e[i];
+          });
+          sum_list_b.push(r_sum);
+          r_sum = 0;
+        }
+        result_list.push(Math.max(...sum_list_b));
+
+        //왼쪽 대각선 구하기
+        for (var i = 0; i < arr.length; i++) {
+          c_sum += arr[i][i];
+        }
+        sum_list_c.push(c_sum);
+        c_sum = 0;
+        //오른쪽 대각선 구하기
+        var j = arr.length - 1;
+        for (var i = 0; i < arr.length; i++) {
+          c_sum += arr[j][i];
+          j -= 1;
+        }
+        sum_list_c.push(c_sum);
+        result_list.push(Math.max(...sum_list_c));
+        answer = Math.max(...result_list);
+
+        return answer;
+      }
+
+      let arr = [
+        [10, 13, 10, 12, 15],
+        [12, 39, 30, 23, 11],
+        [11, 25, 50, 53, 15],
+        [19, 27, 29, 37, 27],
+        [19, 13, 30, 13, 19],
+      ];
+      console.log(solution(arr));
+
+      //풀이
+      let answer = Number.MIN_SAFE_INTEGER;
+      let n = arr.length;
+      let sum1 = (sum2 = 0);
+      for (let i = 0; i < n; i++) {
+        sum1 = sum2 = 0;
+        for (let j = 0; j < n; j++) {
+          sum1 += arr[i][j]; //행
+          sum2 += arr[j][i]; //열
+        }
+        answer = Math.max(answer, sum1, sum2);
+      }
+      sum1 = sum2 = 0;
+      for (let i = 0; i < n; i++) {
+        sum1 += arr[i][i];
+        sum2 += arr[i][n - i - 1];
+      }
+    </script>
+  </body>
+</html>

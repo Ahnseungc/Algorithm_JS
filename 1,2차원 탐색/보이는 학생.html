@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let temp = 0;
+        let answer = 0;
+        // 다른점 시각점을 temp = arr[0], answer = 1;
+        arr.forEach((e) => {
+          if (temp < e) {
+            temp = e;
+            answer++;
+          }
+        });
+        return answer;
+      }
+
+      let arr = [130, 135, 148, 140, 145, 150, 150, 153];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>

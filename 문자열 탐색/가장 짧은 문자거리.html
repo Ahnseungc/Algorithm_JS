@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s, t) {
+        let answer = [];
+
+        for (var j = 0; j < s.length; j++) {
+          let len = s.length;
+          for (var i = 0; i < s.length; i++) {
+            if (s[i] === t) {
+              len = Math.min(len, Math.abs(i - j));
+            }
+          }
+          answer.push(len);
+        }
+
+        return answer;
+      }
+
+      let str = "teachermode";
+      console.log(solution(str, "e"));
+    </script>
+  </body>
+</html>

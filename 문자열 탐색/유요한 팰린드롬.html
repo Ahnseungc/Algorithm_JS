@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = "YES";
+        //정규식 replace([^[a-z]]," ")
+        const s_l = s.toLowerCase().split(" ").join("");
+        const len = s_l.length;
+        for (var i = 0; i < Math.floor(s_l.length / 2); i++) {
+          if (s_l[i] !== s_l[len - i - 1]) {
+            console.log(s_l[i]);
+            console.log(s_l[len - i - 1]);
+            answer = "NO";
+          }
+        }
+        return answer;
+      }
+
+      let str = "found7, time: study; Yduts; emit, 7Dnuof";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>

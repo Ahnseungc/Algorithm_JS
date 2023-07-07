@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let answer = [];
+        let temp = 0;
+
+        arr.forEach((e) => {
+          let rank = arr.length;
+          for (let x of arr) {
+            if (e > x) {
+              rank -= 1;
+            }
+          }
+          answer.push(rank);
+        });
+
+        return answer;
+      }
+
+      let arr = [87, 89, 92, 100, 76];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
