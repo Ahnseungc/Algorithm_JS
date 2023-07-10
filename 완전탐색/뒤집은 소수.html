@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      const isPrime = (e) => {
+        // const arr = [];
+
+        // for(let i=0; i<e+1; i++){
+        //     arr.push(true);
+        // }
+        // for(let i=2; i*i<=n; i++){
+        //     if(arr[i]){
+        //         for(let j=i*i; j<=n; j+=i){
+        //             arr[j] = false;
+        //         }
+        //     }
+        // }
+        // arr.splice(0,2, false, false);
+        // 에라테라테스의체
+
+        if (e === 1) {
+          return false;
+        }
+
+        for (let i = 2; i <= Math.floor(Math.sqrt(e)); i++) {
+          if (e % i === 0) {
+            return false;
+          }
+        }
+
+        return true;
+      };
+
+      function solution(arr) {
+        let answer = [];
+
+        for (let x of arr) {
+          let na = Number(x.toString().split("").reverse().join(""));
+          if (isPrime(na)) {
+            answer.push(na);
+          }
+        }
+        return answer;
+      }
+
+      let arr = [32, 55, 62, 20, 250, 370, 200, 30, 100];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
