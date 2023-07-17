@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(k, arr) {
+        ///슬라이딩 윈도우 : 창문을 옆으로 밀면서 값을 구한다. 그 값을 활용해서 뒤에 값을 더하고 앞에값을 뺀다.
+        let answer,
+          sum = 0;
+
+        for (let i = 0; i < k; i++) sum += arr[i];
+        answer = sum;
+        for (let j = k; j < arr.length; j++) {
+          sum += arr[j] - arr[j - k];
+          answer = Math.max(answer, sum);
+        }
+
+        console.log(answer);
+
+        return answer;
+      }
+
+      let a = [12, 15, 11, 20, 25, 10, 20, 19, 13, 15];
+      console.log(solution(3, a));
+    </script>
+  </body>
+</html>
