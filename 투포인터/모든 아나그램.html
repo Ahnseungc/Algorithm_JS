@@ -1,0 +1,86 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      //   function insphas(str, str2) {
+      //     let cnt = 0;
+      //     let sh = new Map();
+      //     for (let x of str) {
+      //       if (sh.has(x)) {
+      //         sh.set(x, sh.get(x) + 1);
+      //       } else {
+      //         sh.set(x, 1);
+      //       }
+      //     }
+      //     for (let x of str2) {
+      //       if (!sh.has(x) || sh.get(x) === 0) return;
+      //       else {
+      //         sh.set(x, sh.get(x) - 1);
+      //       }
+      //     }
+      //     if (sh.size !== 0) {
+      //       cnt++;
+      //     }
+      //     return cnt;
+      //   }
+      function solution(s, t) {
+        //     let answer = 0;
+        //     let rt,
+        //       lt = 0;
+        //     let lstr = s;
+        //     let sstr = t;
+
+        //     for (var j = 0; j < lstr.length; j++) {
+        //       lt = j;
+        //       rt = j + sstr.length;
+        //       if (rt > lstr.length) {
+        //         return answer;
+        //       }
+        //       //   (answer += insphas(sstr, lstr.substring(lt, rt)))
+        //       insphas(sstr, lstr.substring(lt, rt)) !== undefined
+        //         ? (answer += insphas(sstr, lstr.substring(lt, rt)))
+        //         : null;
+        //     }
+
+        //강사 풀이
+        function compareMaps(map1, map2) {
+          if (map1.size !== map2.size) return false;
+          for (let [key, val] of map1) {
+            if (!map2.has(key) || map2.get(key) !== val) return false;
+          }
+          return true;
+        }
+
+        let answer = 0;
+        let th = new Map();
+        let sh = new Map();
+        for (let x of t) {
+          if (th.has(x)) th.set(x, th.get(x) + 1);
+          else th.set(x, 1);
+        }
+        let len = t.length - 1;
+        for (let i = 0; i < len; i++) {
+          if (sh.has(s[i])) sh.set(s[i], sh.get(s[i]) + 1);
+          else sh.set(s[i], 1);
+        }
+        let lt = 0;
+        for (let rt = len; rt < s.length; rt++) {
+          if (sh.has(s[rt])) sh.set(s[rt], sh.get(s[rt]) + 1);
+          else sh.set(s[rt], 1);
+          if (compareMaps(sh, th)) answer++;
+          sH.set(s[lt], sh.get(lt) - 1);
+          if (sh.get(s[lt]) === 0) sh.delete(s[lt]);
+          lt++;
+        }
+        return answer;
+      }
+
+      let a = "abcabcabc";
+      let b = "abc";
+      console.log(solution(a, b));
+    </script>
+  </body>
+</html>
