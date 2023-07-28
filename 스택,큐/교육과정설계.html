@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(need, plan) {
+        let answer = "YES";
+
+        //stack
+        // let stack = [];
+
+        // for (let x of plan) {
+        //   if ((x === "C") | (x === "B") | (x === "A")) {
+        //     stack.push(x);
+        //   }
+        // }
+
+        // if (stack.join("") !== need) answer = "NO";
+
+        //Queue
+        let Queue = need.split("");
+        for (let x of plan) {
+          if (Queue.includes(x)) {
+            if (x !== Queue.shift()) return (answer = "NO");
+          }
+        }
+        if (Queue.length > 0) return (answer = "NO");
+
+        return answer;
+      }
+      let a = "CBA";
+      let b = "CBDAGE";
+      console.log(solution(a, b));
+    </script>
+  </body>
+</html>

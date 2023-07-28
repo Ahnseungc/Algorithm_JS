@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, k) {
+        let answer;
+        let count = 0;
+
+        //Queue
+        let Queue = Array.from({ length: n }, (v, i) => i + 1);
+        while (Queue.length) {
+          if (Queue.length === 1) {
+            return (answer = Queue.shift());
+          }
+          for (var i = 1; i < k; i++) Queue.push(Queue.shift());
+          console.log(Queue);
+          Queue.shift();
+        }
+
+        return answer;
+      }
+
+      console.log(solution(8, 3));
+    </script>
+  </body>
+</html>
